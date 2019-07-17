@@ -18,9 +18,9 @@
         setActiveSlide(){
             this.slides.forEach( (item, index) =>{
                 if(index === this.currentIndex){
-                    item.style.display = "block";
+                    item.classList.add('active');
                 }else{
-                    item.style.display = "none";
+                    item.classList.remove('active');
                 }
             
             })
@@ -30,20 +30,27 @@
             let nextBtn = this.element.querySelector('[data-direction="next"]');
             nextBtn.addEventListener('click',()=>{
                 if(this.currentIndex === this.slides.length - 1){
-                    this.currentIndex =0;
+                    this.currentIndex = 0;
                 }else{
                     this.currentIndex++;
                 }
+                this.setActiveSlide();
             })
         }
 
 
         prev(){
-
+            let prevBtn = this.element.querySelector('[data-direction="prev"]');
+            prevBtn.addEventListener('click',()=>{
+                if(this.currentIndex === 0){
+                    this.currentIndex = this.slides.length - 1
+                }else{
+                    this.currentIndex--;
+                }
+                this.setActiveSlide();
+            })
         }
-
     }
-
 
     let slideShow = document.querySelectorAll('.slider-container');
 
@@ -53,5 +60,7 @@
 
     })
 
+    
+}
 
-}())
+())

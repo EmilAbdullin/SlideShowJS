@@ -10,6 +10,7 @@
 
 .slide{
     position: relative;
+    display: none;
 }
 
 .slide__img{
@@ -18,6 +19,25 @@
 }
 
 
+.slide.active{
+  display: block;
+  animation:fade linear 1.5s;
+  }
+  
+  
+  @keyframes fade{
+  
+    from{
+      opacity:.35;
+    }
+  
+    to{
+      opacity:1;
+    }
+  
+  
+  }
+  
 
 .slider-container__nav{
     position: absolute;
